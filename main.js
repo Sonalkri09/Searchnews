@@ -5,7 +5,7 @@ function news(){
 alert ("Hello world!");
 var api = 'https://newsapi.org/v2/top-headlines?';
 //var city = '';
-var apikey = 'bb5ba7c8064b42068db9d7cf9219bdad';
+var apikey = '0e8cc5ab21834bab8fe426640b727965';
 var input = document.getElementById('userinput').value;
 console.log(input);
 
