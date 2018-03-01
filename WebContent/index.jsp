@@ -19,6 +19,6 @@
 		<script src="main.js" type="text/javascript"></script>
 
 	<div id="result"></div>
-	<div id="fav_result"></div>
+	<div id="fav"></div>
 </body>
 </html>

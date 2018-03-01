@@ -9,7 +9,7 @@ var api = 'https://newsapi.org/v2/top-headlines?';
 
 var apikey = '0e8cc5ab21834bab8fe426640b727965';
 var input = document.getElementById('userinput').value;
-console.log(input);
+//console.log(input);
 
 var url = api + 'country=' +input+'&'+'apiKey='+apikey;
 var req = new Request(url);
@@ -35,12 +35,17 @@ let printdata=function(data){
        htmlText += '<p class="p-created"> Publised at: ' + data.articles[i].publishedAt + '</p>';
        htmlText += '</div>';
        
-       htmlText += '<div id="images"><img src='+data.articles[i].urlToImage+' height=200px width=200px></div>';
+       htmlText += '<div id="images"><img src='+data.articles[i].urlToImage+' height=500px width=500px></div>';
        htmlText += '<a href='+data.articles[i].url+'>';
        htmlText += '<input type="button" value="Visit Page" />';
        htmlText += '</a>';
-       htmlText += '<button id="addfav" onClick="setData('+data.articles[i].title+')">Add to favourites</button>';
+       htmlText += '<input type="submit" value="Add to Favorite" onClick="setData(this)" title=\"'+data.articles[i].title+'\"></input>';
        //htmlText += '<script type="text/javascript" src="main.js"></script>';
+       /*htmlText += "<input type='submit' value='Add to Favourites' onclick=\"addToFavourites(this)\" " +
+       "title=\""+json.articles[i].title+"\" " +
+       "url=\"" +json.articles[i].url+"\" " +
+       "urlToImage=\"" +json.articles[i].urlToImage+"\"" +
+       "description=\"" +json.articles[i].description+"\"></div>";*/
        htmlText += '<hr>';
    }
 document.getElementById('result').insertAdjacentHTML('afterend',htmlText);
@@ -49,17 +54,24 @@ document.getElementById('result').insertAdjacentHTML('afterend',htmlText);
 
 
 
-let setData =function (data1){
+let setData =function (input){
+	
 	alert("hi");
+	var title= input.getAttribute('title');
+	console.log(title);
+	
 	var xmlhttp = new XMLHttpRequest();
+	var url1 ="http://localhost:8080/newsearch/MyServlet?title="+title;
+	xmlhttp.open('GET',url1, true);
+	xmlhttp.send();
 	
 	xmlhttp.onreadystatechange = function(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			document.getElementById('fav').innerHTML = xmlhttp.responseText;
+			//document.getElementById('fav').innerHTML = xmlhttp.responseText;
+			document.getElementById('fav').insertAdjacentHTML('afterend',xmlhttp.responseText);
 		}
 	};
 	
-	var params = "data="+data1;
-	xmlhttp.open('GET',"http://localhost:8080/newsearch/MyServlet?"+params, true);
-	xmlhttp.send();
+	
+	 
 };

@@ -25,9 +25,13 @@ public class MyServlet extends HttpServlet {
 		
 		JSONObject info = new JSONObject();
 		JSONArray  addresses = new JSONArray();
+	
 		try {
-			info.put("data",request.getParameter("data"));
-		} catch (JSONException e) {e.printStackTrace();
+			
+			info.put("title",request.getParameter("title"));
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	
 	try {
