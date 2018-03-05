@@ -3,15 +3,16 @@ package com.news;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.jar.JarException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 
 @WebServlet("/MyServlet")
@@ -26,17 +27,11 @@ public class MyServlet extends HttpServlet {
 		JSONObject info = new JSONObject();
 		JSONArray  addresses = new JSONArray();
 	
-		try {
-			
-			info.put("title",request.getParameter("title"));
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		info.put("title",request.getParameter("title"));
 	
 	try {
 		
-		FileWriter jsonFileWriter = new FileWriter("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json",true);
+		FileWriter jsonFileWriter = new FileWriter("C:\\Users\\User\\Documents\\workspace-sts-3.9.2.RELEASE\\SearchNews\\src\\com\\news\\dav.json",true);
 		//System.out.println(info.toString());
 		jsonFileWriter.write(info.toString());
 		jsonFileWriter.flush();
