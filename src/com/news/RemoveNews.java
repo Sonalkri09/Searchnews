@@ -25,35 +25,34 @@ public class RemoveNews extends HttpServlet {
     
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 				JSONArray array = new JSONArray();
 				JSONObject obj= new JSONObject();
 
-				// setting response type
+				
 				response.setContentType("application/json");
-				// getting the movie to delete from request
+				
 				String title = request.getParameter("title");
-				// sending the response
+				
 				PrintWriter out = response.getWriter();
-				// showing the movie deleted
+				
 				out.print("Removing <b>" + title + "</b> from your favorite locations");
-				// opening the file
+				
 				String fileName = "//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json";
 				JSONParser parser = new JSONParser();
 				try {
-					// parsing the file into json array
+					
 					array = (JSONArray) parser.parse(new FileReader(fileName));
-					// if id exists, do not add and return error
+					
 					for (int looper = 0; looper < array.size(); looper++) {
 						title = (String) array.get(looper);
-						// matching the movie with json
+						
 						if (String.valueOf(obj.get("title")).equals(String.valueOf(title))) {
-							// if found remove entire array
+							
 							array.remove(looper);
 							FileWriter jsonFile = null;
 							try {
-								jsonFile = new FileWriter("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json");
+								jsonFile = new FileWriter(fileName);
 								jsonFile.write(array.toString());
 							} catch (Exception e) {
 								System.out.println("Please enter a valid path where you want to store your json");

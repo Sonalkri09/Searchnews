@@ -26,11 +26,11 @@ public class FavList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-		// creating json parser and array to retrieve value from json
+		
 		JSONParser parser = new JSONParser();
 		JSONArray arr = new JSONArray();
 		try {
-			// opening the file and parsing json object
+		
 			arr = (JSONArray) parser.parse(new FileReader("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json"));
 			// sending the response
 			out.println(arr);
