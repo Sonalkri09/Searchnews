@@ -15,34 +15,26 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
- * Servlet implementation class FavList
- */
 @WebServlet("/FavList")
 public class FavList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		PrintWriter out = response.getWriter();
-		
 		JSONParser parser = new JSONParser();
 		JSONArray arr = new JSONArray();
 		try {
 		
 			arr = (JSONArray) parser.parse(new FileReader("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json"));
-			// sending the response
 			out.println(arr);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

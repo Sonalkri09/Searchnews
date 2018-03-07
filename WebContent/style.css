@@ -1,9 +1,12 @@
 
 body{
-	
-	
 	width:80%;
 	margin:auto;
 	background-color:#b3d9ff;
 	padding-top:30px;
+}
+
+h1{
+	text-align:center;
+	
 }

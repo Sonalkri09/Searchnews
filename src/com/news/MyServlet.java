@@ -42,24 +42,23 @@ public class MyServlet extends HttpServlet {
 		
 		json.put("title", title);
 		
-		// opening file
+		
 		File f = new File("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json");
-		// checking if file exists or not
+		
 		if (f.exists()) {
 			try {
-				// if array exists already take the values from array else we will make a new
-				// file
+				
 				jarray = (JSONArray) parser.parse(new FileReader("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 		}
-		// if array size is less then 10 then only adding in array
+		
 		if (jarray.size() < 10) {
 			jarray.add(json);
 			FileWriter jsonFile = null;
 			try {
-				// over writing the previously existing file
+				
 				jsonFile = new FileWriter("//home//sapient//Documents//workspace-sts-3.9.2.RELEASE//newsearch//src//com//news//dav.json");
 				jsonFile.write(jarray.toString());
 				System.out.println(json.toString());
@@ -77,7 +76,7 @@ public class MyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 
